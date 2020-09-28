@@ -45,7 +45,4 @@ public class QuestionsController {
         return question;
     }
 
-
-
-
 }
