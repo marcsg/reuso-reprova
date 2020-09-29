@@ -46,4 +46,6 @@ public class Question {
 
     // Option path for a file corresponding to the question
     private String filePath;
+
+    List<SemesterGrade> semesterGrades;
 }

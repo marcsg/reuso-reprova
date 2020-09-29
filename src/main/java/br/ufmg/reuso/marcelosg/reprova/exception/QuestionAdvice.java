@@ -27,4 +27,11 @@ public class QuestionAdvice {
         log.error("Mongodb operation failed. message={}", mongoException.getMessage(), mongoException);
         return "Internal error to access database. " + mongoException.getMessage();
     }
+
+    @ResponseBody
+    @ExceptionHandler(ValidationException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    ValidationException handleValidationException(ValidationException validationException) {
+        return validationException;
+    }
 }

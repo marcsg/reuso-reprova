@@ -1,6 +1,7 @@
 package br.ufmg.reuso.marcelosg.reprova.controller;
 
 import br.ufmg.reuso.marcelosg.reprova.model.Question;
+import br.ufmg.reuso.marcelosg.reprova.model.SemesterGrade;
 import br.ufmg.reuso.marcelosg.reprova.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -29,7 +30,6 @@ public class QuestionsController {
     @DeleteMapping("/{id}")
     ResponseEntity deleteById(@PathVariable String id) {
         questionService.delete(id);
-
         return ResponseEntity.ok().build();
     }
 
@@ -43,6 +43,11 @@ public class QuestionsController {
     @PutMapping("/{id}")
     Question update(@RequestBody Question question, @PathVariable Integer id) {
         return question;
+    }
+
+    @PostMapping("/{id}/grades")
+    Question addGrades(@RequestBody SemesterGrade inputGrades, @PathVariable String id) {
+        return questionService.addGrades(id, inputGrades);
     }
 
 }
