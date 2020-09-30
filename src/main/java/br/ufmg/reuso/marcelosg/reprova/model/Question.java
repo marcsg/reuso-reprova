@@ -22,6 +22,8 @@ public class Question {
     private List<String> themes;
 
     private Set<String> tags;
+
+
     /**
      * The description of the question. Mustn't be null nor empty.
      */

@@ -1,5 +1,13 @@
 # reprova-reuso
 
+## Alguns Tópicos da Disciplina utilizados
+* Runtime configuration usando Qualifiers
+* Layered architecture
+* ControllerAdvices - funcionam como facades (??)
+
+## Some implemntation decisions
+* Question grades for a given semester can be updated but only entirely. The existing grade list will be replaced by the new one. The statistics are re-calculated on every grade update.
+
 
 Create question
 
@@ -16,3 +24,16 @@ POST http://localhost:8080/questions/
 }
 ```
 
+
+Create an Exam referencing an exam
+
+POST http://localhost:8080/exams
+
+```json
+{
+    "title": "First exam of 2020/2",
+    "year": 2020,
+    "semester": 2,
+    "questions": [{"id": "5f73d7cd335b8b7be6c29e0e"}]
+}
+```

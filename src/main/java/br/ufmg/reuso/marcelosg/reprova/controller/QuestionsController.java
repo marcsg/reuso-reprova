@@ -34,10 +34,9 @@ public class QuestionsController {
     }
 
     @PostMapping
-    ResponseEntity<Question> create(@RequestBody Question question) {
-        var q = questionService.createQuestion(question);
-
-        return ResponseEntity.status(HttpStatus.CREATED).body(q);
+    ResponseEntity<Question> create(@RequestBody Question inputQuestion) {
+        var question = questionService.createQuestion(inputQuestion);
+        return ResponseEntity.status(HttpStatus.CREATED).body(question);
     }
 
     @PutMapping("/{id}")

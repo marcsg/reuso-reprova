@@ -14,9 +14,9 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 public class QuestionAdvice {
 
     @ResponseBody
-    @ExceptionHandler(QuestionNotFoundException.class)
+    @ExceptionHandler(ItemNotFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    String handleQuestionNotFound(QuestionNotFoundException exception) {
+    String handleQuestionNotFound(ItemNotFoundException exception) {
         return exception.getMessage();
     }
 

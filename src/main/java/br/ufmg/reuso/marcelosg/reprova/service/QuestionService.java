@@ -1,6 +1,6 @@
 package br.ufmg.reuso.marcelosg.reprova.service;
 
-import br.ufmg.reuso.marcelosg.reprova.exception.QuestionNotFoundException;
+import br.ufmg.reuso.marcelosg.reprova.exception.ItemNotFoundException;
 import br.ufmg.reuso.marcelosg.reprova.exception.ValidationException;
 import br.ufmg.reuso.marcelosg.reprova.model.Question;
 import br.ufmg.reuso.marcelosg.reprova.model.SemesterGrade;
@@ -23,7 +23,7 @@ public class QuestionService {
     QuestionRepository questionRepository;
 
     public Question findById(String id) {
-        return questionRepository.findById(id).orElseThrow(() -> new QuestionNotFoundException(id));
+        return questionRepository.findById(id).orElseThrow(() -> new ItemNotFoundException(id));
     }
 
     public Collection<Question> find() {
@@ -46,14 +46,14 @@ public class QuestionService {
         return question;
     }
 
-    public Question addGrades(String questionid, SemesterGrade inputGrades) {
+    public Question addGrades(String questionId, SemesterGrade inputGrades) {
 
         var validationResult = GradesValidator.isValidSemesterGrade(inputGrades);
         if (validationResult.isPresent()) {
             throw new ValidationException(validationResult.get());
         }
 
-        var question = questionRepository.findById(questionid).orElseThrow(() -> new QuestionNotFoundException(questionid));
+        var question = questionRepository.findById(questionId).orElseThrow(() -> new ItemNotFoundException(questionId));
 
         StatsCalculator.calculateGradesStatistics(inputGrades);
 
@@ -61,20 +61,19 @@ public class QuestionService {
             question.setSemesterGrades(new ArrayList<>());
         }
 
-        var existingGrade = question.getSemesterGrades()
-                .stream()
-                .filter(s -> s.getSemester().equals(inputGrades.getSemester()) && s.getYear().equals(inputGrades.getYear()))
-                .findFirst();
+        var existingGradeIndex = question.getSemesterGrades().indexOf(inputGrades);
 
-        if (existingGrade.isPresent()) {
-            // TODO Mix and match
+        if (existingGradeIndex >= 0) {
+            question.getSemesterGrades().set(existingGradeIndex, inputGrades);
+            log.info("Updated existing semester grade year={} semester={} on question={}", inputGrades.getYear(), inputGrades.getSemester(), questionId);
 
         } else {
-            StatsCalculator.calculateGradesStatistics(inputGrades);
             question.getSemesterGrades().add(inputGrades);
-            questionRepository.save(question);
+            log.info("Semester Grade for year={} semester={} added to question={}", inputGrades.getYear(), inputGrades.getSemester(), questionId);
         }
 
+        StatsCalculator.calculateGradesStatistics(inputGrades);
+        questionRepository.save(question);
         return question;
     }
 }
