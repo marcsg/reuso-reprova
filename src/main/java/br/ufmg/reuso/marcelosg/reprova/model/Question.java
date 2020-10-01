@@ -19,11 +19,6 @@ public class Question {
     @Id
     private String id;
 
-    private List<String> themes;
-
-    private Set<String> tags;
-
-
     /**
      * The description of the question. Mustn't be null nor empty.
      */
@@ -32,6 +27,13 @@ public class Question {
      * The statement of the question. May be null or empty.
      */
     private String statement;
+
+    private Stats stats;
+
+    private List<String> themes;
+
+    private Set<String> tags;
+
     /**
      * The record of the question per semester per class. Mustn't be null, may be empty.
      */
