@@ -12,6 +12,7 @@ public class SemesterGrade {
 
     private Integer year;
     private Integer semester;
+    private String discipline;
     private Stats stats;
     private List<StudentGrade> grades;
 

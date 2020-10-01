@@ -44,7 +44,7 @@ public class QuestionsController {
         return question;
     }
 
-    @PostMapping("/{id}/grades")
+    @PutMapping("/{id}/grades")
     Question addGrades(@RequestBody SemesterGrade inputGrades, @PathVariable String id) {
         return questionService.addGrades(id, inputGrades);
     }

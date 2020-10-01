@@ -22,13 +22,18 @@ public class ExamsController {
     }
 
     @GetMapping("/{id}")
-    ResponseEntity<Exam> findById(@PathVariable("id") String id, @RequestParam(required = false) boolean filterGradesBySemester) {
-        return ResponseEntity.status(HttpStatus.OK).body(examService.findById(id, filterGradesBySemester));
+    ResponseEntity<Exam> findById(@PathVariable("id") String id) {
+        return ResponseEntity.status(HttpStatus.OK).body(examService.findById(id));
     }
 
     @GetMapping
-    ResponseEntity<Collection<Exam>> findExams(@RequestParam(required = false) boolean filterGradesBySemester) {
-        return ResponseEntity.ok(examService.find(filterGradesBySemester));
+    ResponseEntity<Collection<Exam>> findExams() {
+        return ResponseEntity.ok(examService.find());
+    }
+
+    @PutMapping("/{id}/grades")
+    ResponseEntity<Exam> updateExamGrades(@PathVariable("id") String id) {
+        return ResponseEntity.ok(examService.calculateExamGrades(id));
     }
 
     @DeleteMapping("/{id}")

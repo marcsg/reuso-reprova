@@ -28,6 +28,7 @@ public class Question {
      */
     private String statement;
 
+    private String discipline;
     private Stats stats;
 
     private List<String> themes;

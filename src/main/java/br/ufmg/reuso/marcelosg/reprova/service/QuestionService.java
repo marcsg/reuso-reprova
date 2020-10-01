@@ -55,7 +55,8 @@ public class QuestionService {
 
         var question = questionRepository.findById(questionId).orElseThrow(() -> new ItemNotFoundException(questionId));
 
-        StatsCalculator.calculateGradesStatistics(inputGrades);
+        var stats  = StatsCalculator.calculateGradesStatistics(inputGrades.getGrades());
+        inputGrades.setStats(stats);
 
         if (question.getSemesterGrades() == null) {
             question.setSemesterGrades(new ArrayList<>());
@@ -72,7 +73,6 @@ public class QuestionService {
             log.info("Semester Grade for year={} semester={} added to question={}", inputGrades.getYear(), inputGrades.getSemester(), questionId);
         }
 
-        StatsCalculator.calculateGradesStatistics(inputGrades);
         questionRepository.save(question);
         return question;
     }

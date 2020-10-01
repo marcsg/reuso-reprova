@@ -20,10 +20,12 @@ public class Exam {
     private String id;
 
     private String title;
+    private String discipline;
     private Integer year;
     private Integer semester;
 
     private Stats stats;
+    private List<StudentGrade> studentGrades;
 
     private LocalDateTime applicationDate;
 
