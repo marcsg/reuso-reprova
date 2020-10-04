@@ -1,12 +1,23 @@
 # reprova-reuso
 
 ## Alguns Tópicos da Disciplina utilizados
+* Using java libraries such as: Apache Commons Math  
 * Runtime configuration usando Qualifiers
-* Layered architecture
-* ControllerAdvices - funcionam como facades (??)
+* Layered architecture: Controller -> Service (Business logic) -> Data Layer (Repository)
+* Lombok annotations 
+* Aspect Oriented Programming:
+    * ControllerAdvices
+    * Aspect to log execution time
+    * Aspect to filter results of some methods
+* Design Patterns
+    * Builders
+    * Strategies / Factories to generate exams by criteria:
+        - number of questions and random
+        - number of questions and average grade
+        - total time 
 
 ## Some implemntation decisions
-* Question grades for a given semester can be updated but only entirely. The existing grade list will be replaced by the new one. The statistics are re-calculated on every grade update.
+* Question grades for a given semester can be updated but only entirely (not individul grades). The existing grade list will be replaced by the new one. The statistics are re-calculated on every grade update.
 
 
 Create question
