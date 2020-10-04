@@ -37,3 +37,9 @@ POST http://localhost:8080/exams
     "questions": [{"id": "5f73d7cd335b8b7be6c29e0e"}]
 }
 ```
+
+Notes:
+1. Import ssh key to ssh-agent:
+```bash
+ssh-add -K ~/.ssh/id_rsa_ufmg
+```
