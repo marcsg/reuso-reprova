@@ -1,4 +1,4 @@
-package br.ufmg.reuso.marcelosg.reprova.exception;
+package br.ufmg.reuso.marcelosg.reprova.exceptions;
 
 public class ItemNotFoundException extends RuntimeException {
 

@@ -1,9 +1,8 @@
 package br.ufmg.reuso.marcelosg.reprova.service;
 
-import br.ufmg.reuso.marcelosg.reprova.exception.ItemNotFoundException;
+import br.ufmg.reuso.marcelosg.reprova.exceptions.ItemNotFoundException;
 import br.ufmg.reuso.marcelosg.reprova.model.Exam;
 import br.ufmg.reuso.marcelosg.reprova.repository.ExamRepository;
-import br.ufmg.reuso.marcelosg.reprova.utils.GradesFilter;
 import br.ufmg.reuso.marcelosg.reprova.utils.StatsCalculator;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,17 +35,11 @@ public class ExamService {
     }
 
     public Exam findById(String id) {
-        var exam = examRepository.findById(id).orElseThrow(() -> new ItemNotFoundException(id));
-
-        GradesFilter.filterExamGradesFromSameYearAndSemester(exam);
-        return exam;
+        return examRepository.findById(id).orElseThrow(() -> new ItemNotFoundException(id));
     }
 
     public Collection<Exam> find() {
-        var exams = examRepository.findAll(Sort.by("title").ascending());
-
-        exams.forEach(GradesFilter::filterExamGradesFromSameYearAndSemester);
-        return exams;
+        return examRepository.findAll(Sort.by("title").ascending());
     }
 
     public Boolean deleteById(String id) {

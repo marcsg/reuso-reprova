@@ -1,7 +1,7 @@
 package br.ufmg.reuso.marcelosg.reprova.service;
 
-import br.ufmg.reuso.marcelosg.reprova.exception.ItemNotFoundException;
-import br.ufmg.reuso.marcelosg.reprova.exception.ValidationException;
+import br.ufmg.reuso.marcelosg.reprova.exceptions.ItemNotFoundException;
+import br.ufmg.reuso.marcelosg.reprova.exceptions.ValidationException;
 import br.ufmg.reuso.marcelosg.reprova.model.Question;
 import br.ufmg.reuso.marcelosg.reprova.model.SemesterGrade;
 import br.ufmg.reuso.marcelosg.reprova.repository.QuestionRepository;

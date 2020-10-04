@@ -1,5 +1,7 @@
-package br.ufmg.reuso.marcelosg.reprova.exception;
+package br.ufmg.reuso.marcelosg.reprova.aspects;
 
+import br.ufmg.reuso.marcelosg.reprova.exceptions.ItemNotFoundException;
+import br.ufmg.reuso.marcelosg.reprova.exceptions.ValidationException;
 import com.mongodb.MongoSocketException;
 import com.mongodb.MongoSocketOpenException;
 import lombok.extern.slf4j.Slf4j;
