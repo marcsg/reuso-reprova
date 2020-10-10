@@ -1,6 +1,5 @@
 package br.ufmg.reuso.marcelosg.reprova.model;
 
-import br.ufmg.reuso.marcelosg.reprova.enums.QuestionDifficulty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -35,11 +34,6 @@ public class Question {
 
     private Set<String> tags;
 
-    /**
-     * The record of the question per semester per class. Mustn't be null, may be empty.
-     */
-    // TODO No records in this initial implementation
-//    private Map<Semester, Map<String, Float>> record;
     /**
      * Whether the question is private.
      */

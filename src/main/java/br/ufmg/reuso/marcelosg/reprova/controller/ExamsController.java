@@ -1,7 +1,8 @@
 package br.ufmg.reuso.marcelosg.reprova.controller;
 
-import br.ufmg.reuso.marcelosg.reprova.TrackExecutionTime;
+import br.ufmg.reuso.marcelosg.reprova.aspects.TrackExecutionTime;
 import br.ufmg.reuso.marcelosg.reprova.model.Exam;
+import br.ufmg.reuso.marcelosg.reprova.model.ExamGeneratorCriteria;
 import br.ufmg.reuso.marcelosg.reprova.service.ExamService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,6 +17,12 @@ public class ExamsController {
 
     @Autowired
     private ExamService examService;
+
+    @TrackExecutionTime
+    @PostMapping("/generator")
+    ResponseEntity<Exam> generateExam(@RequestBody ExamGeneratorCriteria criteria) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(examService.generateExam(criteria));
+    }
 
     @TrackExecutionTime
     @PostMapping

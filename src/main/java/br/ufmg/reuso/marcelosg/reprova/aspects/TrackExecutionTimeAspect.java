@@ -15,7 +15,7 @@ import java.time.Instant;
 public class TrackExecutionTimeAspect {
 
     // Measures execution time of any method annotated with @TrackExecutionTime
-    @Around("@annotation(br.ufmg.reuso.marcelosg.reprova.TrackExecutionTime)")
+    @Around("@annotation(br.ufmg.reuso.marcelosg.reprova.aspects.TrackExecutionTime)")
     public Object trackExecutionTime(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
         var start = Instant.now();
 

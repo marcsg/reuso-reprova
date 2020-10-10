@@ -1,5 +1,6 @@
 package br.ufmg.reuso.marcelosg.reprova.aspects;
 
+import br.ufmg.reuso.marcelosg.reprova.exceptions.ErrorResponse;
 import br.ufmg.reuso.marcelosg.reprova.exceptions.ItemNotFoundException;
 import br.ufmg.reuso.marcelosg.reprova.exceptions.ValidationException;
 import com.mongodb.MongoSocketException;
@@ -33,7 +34,7 @@ public class QuestionAdvice {
     @ResponseBody
     @ExceptionHandler(ValidationException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    ValidationException handleValidationException(ValidationException validationException) {
-        return validationException;
+    ErrorResponse handleValidationException(ValidationException validationException) {
+        return validationException.getError();
     }
 }

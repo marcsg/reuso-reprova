@@ -1,4 +1,4 @@
-package br.ufmg.reuso.marcelosg.reprova;
+package br.ufmg.reuso.marcelosg.reprova.aspects;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

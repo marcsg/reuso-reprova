@@ -1,4 +1,4 @@
-package br.ufmg.reuso.marcelosg.reprova.enums;
+package br.ufmg.reuso.marcelosg.reprova.model;
 
 public enum QuestionDifficulty {
 
