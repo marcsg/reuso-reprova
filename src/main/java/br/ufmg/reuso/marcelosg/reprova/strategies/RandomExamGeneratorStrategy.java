@@ -23,7 +23,6 @@ public class RandomExamGeneratorStrategy implements ExamGeneratorStrategy {
         Aggregation aggregation = Aggregation.newAggregation(sampleOperation);
         AggregationResults<Question> results = mongoTemplate.aggregate(aggregation, "question", Question.class);
 
-        System.out.println(results.getMappedResults());
         return results.getMappedResults();
     }
 }

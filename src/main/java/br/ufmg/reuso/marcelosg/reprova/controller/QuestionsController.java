@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Collection;
 
 @RestController
-@ConditionalOnExpression("${professor_features.active:true}")
+@ConditionalOnExpression("${professor_features.active}")
 @RequestMapping("/questions")
 public class QuestionsController {
 

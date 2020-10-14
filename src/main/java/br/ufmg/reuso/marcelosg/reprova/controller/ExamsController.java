@@ -44,7 +44,7 @@ public class ExamsController {
 
     @TrackExecutionTime
     @PutMapping("/{id}/grades")
-    ResponseEntity<Exam> updateExamGrades(@PathVariable("id") String id) {
+    ResponseEntity<Exam> calculateExamGrades(@PathVariable("id") String id) {
         return ResponseEntity.ok(examService.calculateExamGrades(id));
     }
 
