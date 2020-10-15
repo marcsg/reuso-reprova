@@ -1,16 +1,51 @@
 # Reprova 2.0
 
+**Author**: Marcelo Santos Guimaraes  
+**Email**: marcsgbh@gmail.com
+
 Application created for the discipline Software Reuse of DCC/UFMG at semester 2020/1. It is a system that provides features to manage questions and exams and uses several topics of the discipline such as AOP, libs, Design Patterns, load-time config, among others.  
 
 ## Stack
-Spring
-MongoDB
-AspectJ
-Apache Commons Math
-Lombok
+- Spring
+- MongoDB
+- AspectJ
+- Apache Commons Math
+- Lombok
+
+Note: Since this application uses Lombok, you need to activate Lombok in your IDE (and maybe Annotation Processing setting) 
 
 ## Running the service
+### Requirements
+* Maven
+* Docker if you want to run with Docker containers
+* If running without Docker, it requires MongoDB
+### Initial Setup
+Run a maven install to generate `.jar` file in `target` directory:
+```shell
+mvn clean install
+```
 
+### Run Application
+You can run the service locally by manually setting up a local mongoDB instance or using Docker.
+
+- **Local MongoDB Deamon**
+> MongoDB Install with Homebrew
+```shell
+$ brew install mongodb
+$ mkdir -p /data/db
+$ sudo chown -R `id -un` /data/db
+```
+Run Mongo daemon `mongod` in a separate tab to start the database.
+
+> Run Application
+```shell
+mvn spring-boot:run
+```
+
+- **Docker**
+```shell
+$ docker-compose up --build
+```
 
 ## APIs
 
@@ -27,11 +62,12 @@ POST http://localhost:8080/questions/
 
 ```json
 {
-    "theme": "Reuse",
+    "themes": ["Reuse"],
     "pvt": true,
     "tags": ["test", "reuso", "question"],
-    "description": "This is a sample question for testing purposes only.",
-    "statement": "Check this statement: This one starts with a C"
+    "description": "Question Number 2.",
+    "statement": "Another statement: This one starts with an A",
+    "difficulty": "HARD"
 }
 ```
 
